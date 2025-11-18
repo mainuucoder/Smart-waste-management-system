@@ -4,22 +4,22 @@ import { Recycle, MapPin, Calendar, TrendingUp, Sparkles, Trash2, Mail, Phone, M
 const Home = () => {
   const features = [
     {
-      icon: <MapPin className="h-12 w-12 text-green-600" />,
+      icon: <MapPin className="h-8 w-8 md:h-12 md:w-12 text-green-600" />,
       title: 'Report Issues',
       description: 'Easily report waste collection problems in your area with photos and location',
     },
     {
-      icon: <Calendar className="h-12 w-12 text-green-600" />,
+      icon: <Calendar className="h-8 w-8 md:h-12 md:w-12 text-green-600" />,
       title: 'Collection Schedule',
       description: 'View waste collection schedules for your area and get timely reminders',
     },
     {
-      icon: <Recycle className="h-12 w-12 text-green-600" />,
+      icon: <Recycle className="h-8 w-8 md:h-12 md:w-12 text-green-600" />,
       title: 'Recycling Info',
       description: 'Learn about proper waste segregation and recycling practices',
     },
     {
-      icon: <TrendingUp className="h-12 w-12 text-green-600" />,
+      icon: <TrendingUp className="h-8 w-8 md:h-12 md:w-12 text-green-600" />,
       title: 'Track Progress',
       description: 'Monitor the status of your reports and see community impact',
     },
@@ -29,12 +29,11 @@ const Home = () => {
     <div className="min-h-screen">
       {/* Hero Section with Background Image */}
       <section 
-        className="relative min-h-screen flex items-center justify-center"
+        className="relative min-h-screen flex items-center justify-center px-4 sm:px-6"
         style={{
           backgroundImage: `url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=1920&q=80')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          backgroundAttachment: 'fixed',
         }}
       >
         {/* Green Overlay for Better Text Readability */}
@@ -42,52 +41,51 @@ const Home = () => {
         
         {/* Animated Sparkles Effect */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <Sparkles className="absolute top-20 left-20 text-white/30 w-6 h-6 animate-pulse" />
-          <Sparkles className="absolute top-40 right-32 text-white/20 w-8 h-8 animate-pulse animation-delay-200" />
-          <Sparkles className="absolute bottom-32 left-1/4 text-white/25 w-7 h-7 animate-pulse animation-delay-400" />
-          <Sparkles className="absolute top-1/3 right-20 text-white/30 w-5 h-5 animate-pulse animation-delay-600" />
+          <Sparkles className="absolute top-10 left-4 text-white/30 w-4 h-4 animate-pulse" />
+          <Sparkles className="absolute top-20 right-6 text-white/20 w-5 h-5 animate-pulse animation-delay-200" />
+          <Sparkles className="absolute bottom-20 left-1/4 text-white/25 w-4 h-4 animate-pulse animation-delay-400" />
         </div>
 
         {/* Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="relative z-10 max-w-7xl mx-auto px-2 sm:px-4 lg:px-8 py-8 md:py-20">
           <div className="text-center">
             {/* Animated Heading */}
-            <h1 className="text-7xl font-extrabold text-white mb-6 animate-fade-in-down drop-shadow-2xl">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-4 md:mb-6 animate-fade-in-down drop-shadow-2xl leading-tight">
               Smart Waste Management
             </h1>
             
             {/* Animated Subtitle */}
-            <p className="text-3xl text-white font-medium mb-10 max-w-4xl mx-auto animate-fade-in-up animation-delay-200 drop-shadow-lg leading-relaxed">
-              Join us in building sustainable cities and communities. 
-              <span className="block mt-2 text-green-200">
+            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white font-medium mb-6 md:mb-10 max-w-4xl mx-auto animate-fade-in-up animation-delay-200 drop-shadow-lg leading-relaxed px-2">
+              Join us in building sustainable cities and communities.
+              <span className="block mt-2 text-green-200 text-base sm:text-lg md:text-xl">
                 Report waste issues, track collection schedules, and contribute to a cleaner environment.
               </span>
             </p>
             
             {/* Animated Buttons */}
-            <div className="flex justify-center space-x-6 animate-fade-in animation-delay-400">
+            <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4 md:space-x-6 animate-fade-in animation-delay-400">
               <Link 
                 to="/register" 
-                className="bg-white text-green-700 hover:bg-green-50 px-10 py-5 text-xl font-bold rounded-full shadow-2xl transform hover:scale-110 transition-all duration-300 hover:shadow-green-500/50"
+                className="w-full sm:w-auto bg-white text-green-700 hover:bg-green-50 px-6 py-4 md:px-10 md:py-5 text-base md:text-xl font-bold rounded-full shadow-2xl transform hover:scale-105 transition-all duration-300 hover:shadow-green-500/50 text-center"
               >
                 🌱 Get Started
               </Link>
               <Link 
                 to="/login" 
-                className="bg-green-600/90 backdrop-blur-sm text-white hover:bg-green-700 px-10 py-5 text-xl font-bold rounded-full shadow-2xl transform hover:scale-110 transition-all duration-300 border-2 border-white/30"
+                className="w-full sm:w-auto bg-green-600/90 backdrop-blur-sm text-white hover:bg-green-700 px-6 py-4 md:px-10 md:py-5 text-base md:text-xl font-bold rounded-full shadow-2xl transform hover:scale-105 transition-all duration-300 border-2 border-white/30 text-center"
               >
                 ♻️ Sign In
               </Link>
             </div>
 
             {/* Cleaning Person Illustration */}
-            <div className="mt-16 animate-fade-in animation-delay-600">
+            <div className="mt-8 md:mt-16 animate-fade-in animation-delay-600">
               <div className="relative inline-block">
                 {/* Using emoji/SVG representation */}
-                <div className="text-9xl drop-shadow-2xl animate-bounce-slow">
+                <div className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl drop-shadow-2xl animate-bounce-slow">
                   🧹🌍
                 </div>
-                <p className="text-white text-lg mt-4 font-semibold drop-shadow-lg">
+                <p className="text-white text-sm sm:text-base md:text-lg mt-2 md:mt-4 font-semibold drop-shadow-lg">
                   Together, we clean our planet
                 </p>
               </div>
@@ -95,57 +93,56 @@ const Home = () => {
           </div>
 
           {/* Animated SDG Badge */}
-          <div className="mt-16 text-center animate-fade-in animation-delay-800">
-            <div className="inline-block bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl p-8 transform hover:scale-105 transition-transform duration-300 border-4 border-green-500">
-              <p className="text-sm text-green-600 mb-2 font-bold uppercase tracking-wider">Supporting</p>
-              <h3 className="text-3xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
-                SDG 11: Sustainable Cities and Communities
+          <div className="mt-8 md:mt-16 text-center animate-fade-in animation-delay-800 px-2">
+            <div className="inline-block bg-white/95 backdrop-blur-md rounded-xl md:rounded-2xl shadow-2xl p-4 md:p-8 transform hover:scale-105 transition-transform duration-300 border-4 border-green-500 max-w-xs sm:max-w-none">
+              <p className="text-xs sm:text-sm text-green-600 mb-2 font-bold uppercase tracking-wider">Supporting</p>
+              <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
+                SDG 11: Sustainable Cities
               </h3>
             </div>
           </div>
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <div className="text-white text-4xl">↓</div>
-          <p className="text-white text-sm mt-2">Scroll to explore</p>
+        <div className="absolute bottom-4 md:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <div className="text-white text-2xl md:text-4xl">↓</div>
+          <p className="text-white text-xs md:text-sm mt-1 md:mt-2">Scroll to explore</p>
         </div>
       </section>
 
       {/* Features Section with Clean Background */}
-      <section className="relative py-24" 
+      <section className="relative py-12 md:py-24 px-4 sm:px-6"
         style={{
           backgroundImage: `url('https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=1920&q=80')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          backgroundAttachment: 'fixed',
         }}
       >
         {/* White Overlay */}
         <div className="absolute inset-0 bg-white/95"></div>
         
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-5xl font-bold text-center text-gray-900 mb-4 animate-fade-in">
+        <div className="relative z-10 max-w-7xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-gray-900 mb-4 animate-fade-in">
             How It Works
           </h2>
-          <p className="text-center text-xl text-gray-600 mb-16 max-w-2xl mx-auto">
+          <p className="text-center text-base sm:text-lg md:text-xl text-gray-600 mb-8 md:mb-16 max-w-2xl mx-auto px-2">
             Four simple steps to make your community cleaner
           </p>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-8 text-center hover:shadow-2xl transform hover:-translate-y-3 transition-all duration-300 animate-slide-up border-2 border-green-100 hover:border-green-400"
+                className="bg-white/90 backdrop-blur-sm rounded-xl md:rounded-2xl shadow-lg md:shadow-xl p-4 md:p-6 lg:p-8 text-center hover:shadow-xl md:hover:shadow-2xl transform hover:-translate-y-2 md:hover:-translate-y-3 transition-all duration-300 animate-slide-up border-2 border-green-100 hover:border-green-400"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="flex justify-center mb-6 transform hover:rotate-12 hover:scale-110 transition-transform duration-300 bg-green-50 rounded-full p-4 mx-auto w-fit">
+                <div className="flex justify-center mb-4 md:mb-6 transform hover:rotate-12 hover:scale-110 transition-transform duration-300 bg-green-50 rounded-full p-2 md:p-4 mx-auto w-fit">
                   {feature.icon}
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-2 md:mb-4">
                   {feature.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+                <p className="text-sm sm:text-base text-gray-600 leading-relaxed">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -154,48 +151,47 @@ const Home = () => {
 
       {/* Stats Section with Nature Background */}
       <section 
-        className="relative py-24"
+        className="relative py-12 md:py-24 px-4 sm:px-6"
         style={{
           backgroundImage: `url('https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=1920&q=80')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          backgroundAttachment: 'fixed',
         }}
       >
         {/* Green Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-green-900/90 via-emerald-800/90 to-green-900/90"></div>
         
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-5xl font-bold text-center text-white mb-16">Our Impact</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
-            <div className="animate-count-up bg-white/10 backdrop-blur-md rounded-2xl p-10 border-2 border-white/30">
-              <h3 className="text-7xl font-bold mb-4 text-white drop-shadow-lg">500+</h3>
-              <p className="text-2xl text-green-100 font-semibold">Active Users</p>
+        <div className="relative z-10 max-w-7xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-white mb-8 md:mb-16">Our Impact</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 lg:gap-12 text-center">
+            <div className="animate-count-up bg-white/10 backdrop-blur-md rounded-xl md:rounded-2xl p-6 md:p-8 lg:p-10 border-2 border-white/30">
+              <h3 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-2 md:mb-4 text-white drop-shadow-lg">500+</h3>
+              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-green-100 font-semibold">Active Users</p>
             </div>
-            <div className="animate-count-up animation-delay-200 bg-white/10 backdrop-blur-md rounded-2xl p-10 border-2 border-white/30">
-              <h3 className="text-7xl font-bold mb-4 text-white drop-shadow-lg">1,200+</h3>
-              <p className="text-2xl text-green-100 font-semibold">Reports Submitted</p>
+            <div className="animate-count-up animation-delay-200 bg-white/10 backdrop-blur-md rounded-xl md:rounded-2xl p-6 md:p-8 lg:p-10 border-2 border-white/30">
+              <h3 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-2 md:mb-4 text-white drop-shadow-lg">1,200+</h3>
+              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-green-100 font-semibold">Reports Submitted</p>
             </div>
-            <div className="animate-count-up animation-delay-400 bg-white/10 backdrop-blur-md rounded-2xl p-10 border-2 border-white/30">
-              <h3 className="text-7xl font-bold mb-4 text-white drop-shadow-lg">85%</h3>
-              <p className="text-2xl text-green-100 font-semibold">Issues Resolved</p>
+            <div className="animate-count-up animation-delay-400 bg-white/10 backdrop-blur-md rounded-xl md:rounded-2xl p-6 md:p-8 lg:p-10 border-2 border-white/30">
+              <h3 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-2 md:mb-4 text-white drop-shadow-lg">85%</h3>
+              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-green-100 font-semibold">Issues Resolved</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="bg-gradient-to-br from-green-50 to-emerald-50 py-24 text-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-5xl font-bold text-gray-900 mb-6 animate-fade-in">
+      <section className="bg-gradient-to-br from-green-50 to-emerald-50 py-12 md:py-24 text-center px-4 sm:px-6">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 md:mb-6 animate-fade-in">
             Ready to Make a Difference?
           </h2>
-          <p className="text-2xl text-gray-600 mb-12 animate-fade-in animation-delay-200 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl md:text-2xl text-gray-600 mb-8 md:mb-12 animate-fade-in animation-delay-200 max-w-3xl mx-auto px-2">
             Join our community and help create cleaner, more sustainable cities for future generations.
           </p>
           <Link 
             to="/register" 
-            className="inline-block bg-gradient-to-r from-green-500 to-emerald-600 text-white hover:from-green-600 hover:to-emerald-700 px-12 py-6 text-2xl font-bold rounded-full shadow-2xl transform hover:scale-110 transition-all duration-300 animate-pulse-slow"
+            className="inline-block bg-gradient-to-r from-green-500 to-emerald-600 text-white hover:from-green-600 hover:to-emerald-700 px-8 py-4 md:px-12 md:py-6 text-lg md:text-2xl font-bold rounded-full shadow-xl md:shadow-2xl transform hover:scale-105 transition-all duration-300 animate-pulse-slow w-full sm:w-auto"
           >
             🌟 Join Now
           </Link>
@@ -214,58 +210,58 @@ const Footer = () => {
 
   return (
     <footer className="bg-gray-900 text-gray-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-8">
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
-              <Trash2 className="h-8 w-8 text-green-500" />
-              <span className="text-xl font-bold text-white">
+              <Trash2 className="h-6 w-6 md:h-8 md:w-8 text-green-500" />
+              <span className="text-lg md:text-xl font-bold text-white">
                 Smart Waste Management
               </span>
             </div>
-            <p className="text-gray-400 mb-4 max-w-md">
+            <p className="text-gray-400 mb-4 max-w-md text-sm md:text-base">
               Making cities cleaner and more sustainable through technology and 
               community participation. Supporting SDG 11: Sustainable Cities and Communities.
             </p>
             <div className="space-y-2">
               <div className="flex items-center space-x-2">
-                <Mail className="h-4 w-4 text-green-400" />
-                <span className="text-sm">info@smartwaste.com</span>
+                <Mail className="h-3 w-3 md:h-4 md:w-4 text-green-400" />
+                <span className="text-xs md:text-sm">info@smartwaste.com</span>
               </div>
               <div className="flex items-center space-x-2">
-                <Phone className="h-4 w-4 text-green-400" />
-                <span className="text-sm">+254 700 000 000</span>
+                <Phone className="h-3 w-3 md:h-4 md:w-4 text-green-400" />
+                <span className="text-xs md:text-sm">+254 700 000 000</span>
               </div>
               <div className="flex items-center space-x-2">
-                <MapPinIcon className="h-4 w-4 text-green-400" />
-                <span className="text-sm">Kisumu, Kenya</span>
+                <MapPinIcon className="h-3 w-3 md:h-4 md:w-4 text-green-400" />
+                <span className="text-xs md:text-sm">Kisumu, Kenya</span>
               </div>
             </div>
           </div>
 
           <div>
-            <h3 className="text-white font-semibold mb-4 text-lg">Quick Links</h3>
-            <ul className="space-y-3">
+            <h3 className="text-white font-semibold mb-3 md:mb-4 text-base md:text-lg">Quick Links</h3>
+            <ul className="space-y-2 md:space-y-3">
               <li>
-                <Link to="/" className="hover:text-green-400 transition-colors duration-300 flex items-center space-x-2">
+                <Link to="/" className="hover:text-green-400 transition-colors duration-300 flex items-center space-x-2 text-sm md:text-base">
                   <div className="w-1 h-1 bg-green-400 rounded-full"></div>
                   <span>Home</span>
                 </Link>
               </li>
               <li>
-                <Link to="/reports" className="hover:text-green-400 transition-colors duration-300 flex items-center space-x-2">
+                <Link to="/reports" className="hover:text-green-400 transition-colors duration-300 flex items-center space-x-2 text-sm md:text-base">
                   <div className="w-1 h-1 bg-green-400 rounded-full"></div>
                   <span>Reports</span>
                 </Link>
               </li>
               <li>
-                <Link to="/schedules" className="hover:text-green-400 transition-colors duration-300 flex items-center space-x-2">
+                <Link to="/schedules" className="hover:text-green-400 transition-colors duration-300 flex items-center space-x-2 text-sm md:text-base">
                   <div className="w-1 h-1 bg-green-400 rounded-full"></div>
                   <span>Schedules</span>
                 </Link>
               </li>
               <li>
-                <Link to="/dashboard" className="hover:text-green-400 transition-colors duration-300 flex items-center space-x-2">
+                <Link to="/dashboard" className="hover:text-green-400 transition-colors duration-300 flex items-center space-x-2 text-sm md:text-base">
                   <div className="w-1 h-1 bg-green-400 rounded-full"></div>
                   <span>Dashboard</span>
                 </Link>
@@ -274,28 +270,28 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-white font-semibold mb-4 text-lg">Resources</h3>
-            <ul className="space-y-3">
+            <h3 className="text-white font-semibold mb-3 md:mb-4 text-base md:text-lg">Resources</h3>
+            <ul className="space-y-2 md:space-y-3">
               <li>
-                <a href="#" className="hover:text-green-400 transition-colors duration-300 flex items-center space-x-2">
+                <a href="#" className="hover:text-green-400 transition-colors duration-300 flex items-center space-x-2 text-sm md:text-base">
                   <div className="w-1 h-1 bg-green-400 rounded-full"></div>
                   <span>About Us</span>
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-green-400 transition-colors duration-300 flex items-center space-x-2">
+                <a href="#" className="hover:text-green-400 transition-colors duration-300 flex items-center space-x-2 text-sm md:text-base">
                   <div className="w-1 h-1 bg-green-400 rounded-full"></div>
                   <span>Contact</span>
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-green-400 transition-colors duration-300 flex items-center space-x-2">
+                <a href="#" className="hover:text-green-400 transition-colors duration-300 flex items-center space-x-2 text-sm md:text-base">
                   <div className="w-1 h-1 bg-green-400 rounded-full"></div>
                   <span>FAQ</span>
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-green-400 transition-colors duration-300 flex items-center space-x-2">
+                <a href="#" className="hover:text-green-400 transition-colors duration-300 flex items-center space-x-2 text-sm md:text-base">
                   <div className="w-1 h-1 bg-green-400 rounded-full"></div>
                   <span>Privacy Policy</span>
                 </a>
@@ -304,15 +300,15 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-gray-800">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-sm text-gray-400">
+        <div className="mt-8 md:mt-12 pt-6 md:pt-8 border-t border-gray-800">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0">
+            <p className="text-xs md:text-sm text-gray-400 text-center md:text-left">
               © {currentYear} Smart Waste Management System. All rights reserved.
             </p>
-            <div className="flex items-center space-x-2 mt-4 md:mt-0">
-              <span className="text-sm text-gray-400">Built with</span>
+            <div className="flex items-center space-x-2">
+              <span className="text-xs md:text-sm text-gray-400">Built with</span>
               <div className="text-red-500 animate-pulse">❤️</div>
-              <span className="text-sm text-gray-400">for SDG 11</span>
+              <span className="text-xs md:text-sm text-gray-400">for SDG 11</span>
             </div>
           </div>
         </div>
