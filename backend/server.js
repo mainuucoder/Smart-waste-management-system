@@ -3,7 +3,7 @@
 const connectDB = async () => {
   try {
     // HARDCODE your actual MongoDB URI here for testing
-    const mongoURI = mongodb+srv://smart_waste_user:mongodbuser2020@wasteadmin.emz9rfc.mongodb.net/smart-waste-management?retryWrites=true&w=majority;
+    const mongoURI = 'mongodb+srv://smart_waste_user:mongodbuser2020@wasteadmin.emz9rfc.mongodb.net/smart-waste-management?retryWrites=true&w=majority';
     
     console.log('Using URI:', mongoURI);
     
