@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { Recycle, MapPin, Calendar, TrendingUp, Sparkles, Trash2, Mail, Phone, MapPin as MapPinIcon, Star } from 'lucide-react';
+import { Recycle, MapPin, Calendar, TrendingUp, Sparkles, Trash2, Mail, Phone, MapPin as MapPinIcon, Star, ChevronLeft, ChevronRight, Globe } from 'lucide-react';
+import { useState, useEffect } from 'react';
 
 const Home = () => {
   const features = [
@@ -33,7 +34,8 @@ const Home = () => {
       avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face',
       rating: 5,
       comment: 'There\'s noticeably less litter around the estate since the new system was installed. The reporting feature makes it so easy to alert authorities about overflowing bins.',
-      improvement: 'Community cleanliness improved by 70%'
+      improvement: 'Community cleanliness improved by 70%',
+      website: 'milimanicommunity.org'
     },
     {
       id: 2,
@@ -42,7 +44,8 @@ const Home = () => {
       avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face',
       rating: 4,
       comment: 'This system is helping us meet our sustainability and recycling goals. The data analytics help us track our progress effectively.',
-      improvement: 'Recycling rates increased by 45%'
+      improvement: 'Recycling rates increased by 45%',
+      website: 'greeninitiatives.co.ke'
     },
     {
       id: 3,
@@ -51,7 +54,8 @@ const Home = () => {
       avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face',
       rating: 5,
       comment: 'Collection routes are much faster and more organized now. The schedule reminders have significantly reduced missed collections in our area.',
-      improvement: 'Collection efficiency up by 60%'
+      improvement: 'Collection efficiency up by 60%',
+      website: 'kisumucounty.go.ke'
     },
     {
       id: 4,
@@ -60,7 +64,8 @@ const Home = () => {
       avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
       rating: 4,
       comment: 'It would be great if the system could categorize waste automatically in the future. The current features are already making a huge difference in our community.',
-      improvement: 'Waste sorting accuracy improved'
+      improvement: 'Waste sorting accuracy improved',
+      website: 'tech4good.dev'
     },
     {
       id: 5,
@@ -69,7 +74,8 @@ const Home = () => {
       avatar: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=150&h=150&fit=crop&crop=face',
       rating: 5,
       comment: 'The educational resources on recycling have transformed how residents handle waste. We\'ve seen a dramatic reduction in contamination of recyclable materials.',
-      improvement: 'Recycling contamination down by 80%'
+      improvement: 'Recycling contamination down by 80%',
+      website: 'communityleaders.org'
     },
     {
       id: 6,
@@ -78,9 +84,35 @@ const Home = () => {
       avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face',
       rating: 5,
       comment: 'The real-time reporting helps us prioritize areas that need immediate attention. It has made our work more efficient and impactful.',
-      improvement: 'Response time improved by 50%'
+      improvement: 'Response time improved by 50%',
+      website: 'cleanpathservices.com'
     }
   ];
+
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+
+  const nextTestimonial = () => {
+    setCurrentTestimonial((prev) => 
+      prev === testimonials.length - 1 ? 0 : prev + 1
+    );
+  };
+
+  const prevTestimonial = () => {
+    setCurrentTestimonial((prev) => 
+      prev === 0 ? testimonials.length - 1 : prev - 1
+    );
+  };
+
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+
+    const interval = setInterval(() => {
+      nextTestimonial();
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [isAutoPlaying]);
 
   const renderStars = (rating) => {
     return Array.from({ length: 5 }).map((_, index) => (
@@ -217,7 +249,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Testimonials Section */}
+      {/* Testimonials Section with Horizontal Slider */}
       <section className="relative py-12 md:py-24 px-4 sm:px-6 bg-gradient-to-br from-green-50 to-emerald-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 md:mb-20">
@@ -229,8 +261,108 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {testimonials.map((testimonial, index) => (
+          {/* Desktop Horizontal Slider */}
+          <div className="hidden lg:block">
+            <div className="relative">
+              {/* Navigation Buttons */}
+              <button
+                onClick={prevTestimonial}
+                onMouseEnter={() => setIsAutoPlaying(false)}
+                className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-6 z-20 bg-white hover:bg-green-50 text-green-600 rounded-full p-3 shadow-lg border border-green-200 hover:scale-110 transition-all duration-300"
+              >
+                <ChevronLeft className="h-6 w-6" />
+              </button>
+              
+              <button
+                onClick={nextTestimonial}
+                onMouseEnter={() => setIsAutoPlaying(false)}
+                className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-6 z-20 bg-white hover:bg-green-50 text-green-600 rounded-full p-3 shadow-lg border border-green-200 hover:scale-110 transition-all duration-300"
+              >
+                <ChevronRight className="h-6 w-6" />
+              </button>
+
+              {/* Testimonials Container */}
+              <div className="overflow-hidden">
+                <div 
+                  className="flex transition-transform duration-500 ease-in-out"
+                  style={{ transform: `translateX(-${currentTestimonial * 33.333}%)` }}
+                >
+                  {testimonials.map((testimonial, index) => (
+                    <div
+                      key={testimonial.id}
+                      className="w-1/3 px-4 flex-shrink-0"
+                    >
+                      <div
+                        className={`bg-white rounded-2xl shadow-xl p-8 h-full transform transition-all duration-500 ${
+                          index === currentTestimonial 
+                            ? 'scale-105 border-2 border-green-400 shadow-2xl' 
+                            : 'scale-95 opacity-80 border border-green-100'
+                        }`}
+                      >
+                        {/* Rating Stars */}
+                        <div className="flex justify-center mb-4">
+                          <div className="flex space-x-1">
+                            {renderStars(testimonial.rating)}
+                          </div>
+                        </div>
+
+                        {/* Testimonial Text */}
+                        <p className="text-gray-700 text-center mb-6 leading-relaxed italic text-lg">
+                          "{testimonial.comment}"
+                        </p>
+
+                        {/* Improvement Metric */}
+                        <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-4 mb-6 text-center border border-green-200">
+                          <p className="text-sm font-semibold text-green-700">
+                            📈 {testimonial.improvement}
+                          </p>
+                        </div>
+
+                        {/* Client Info */}
+                        <div className="flex items-center space-x-4">
+                          <img
+                            src={testimonial.avatar}
+                            alt={testimonial.name}
+                            className="w-14 h-14 rounded-full object-cover border-2 border-green-200 shadow-md"
+                          />
+                          <div className="flex-1">
+                            <h4 className="font-bold text-gray-900 text-xl">{testimonial.name}</h4>
+                            <p className="text-green-600 text-base">{testimonial.role}</p>
+                            <div className="flex items-center space-x-1 mt-1">
+                              <Globe className="h-3 w-3 text-green-500" />
+                              <span className="text-xs text-gray-500">{testimonial.website}</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Dots Indicator */}
+              <div className="flex justify-center space-x-2 mt-8">
+                {testimonials.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      setCurrentTestimonial(index);
+                      setIsAutoPlaying(false);
+                    }}
+                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                      index === currentTestimonial 
+                        ? 'bg-green-600 scale-125' 
+                        : 'bg-green-300 hover:bg-green-400'
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile Grid Layout */}
+          <div className="lg:hidden grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+            {testimonials.slice(0, 4).map((testimonial, index) => (
               <div
                 key={testimonial.id}
                 className="bg-white rounded-xl md:rounded-2xl shadow-lg md:shadow-xl p-6 md:p-8 hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 animate-fade-in-up border border-green-100"
@@ -265,6 +397,10 @@ const Home = () => {
                   <div className="flex-1">
                     <h4 className="font-bold text-gray-900 text-lg">{testimonial.name}</h4>
                     <p className="text-green-600 text-sm">{testimonial.role}</p>
+                    <div className="flex items-center space-x-1 mt-1">
+                      <Globe className="h-3 w-3 text-green-500" />
+                      <span className="text-xs text-gray-500">{testimonial.website}</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -273,15 +409,15 @@ const Home = () => {
 
           {/* Stats below testimonials */}
           <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-            <div className="bg-white rounded-xl p-6 shadow-lg border border-green-100">
+            <div className="bg-white rounded-xl p-6 shadow-lg border border-green-100 transform hover:scale-105 transition-transform duration-300">
               <div className="text-3xl md:text-4xl font-bold text-green-600 mb-2">4.8/5</div>
               <p className="text-gray-600">Average User Rating</p>
             </div>
-            <div className="bg-white rounded-xl p-6 shadow-lg border border-green-100">
+            <div className="bg-white rounded-xl p-6 shadow-lg border border-green-100 transform hover:scale-105 transition-transform duration-300">
               <div className="text-3xl md:text-4xl font-bold text-green-600 mb-2">95%</div>
               <p className="text-gray-600">Satisfaction Rate</p>
             </div>
-            <div className="bg-white rounded-xl p-6 shadow-lg border border-green-100">
+            <div className="bg-white rounded-xl p-6 shadow-lg border border-green-100 transform hover:scale-105 transition-transform duration-300">
               <div className="text-3xl md:text-4xl font-bold text-green-600 mb-2">2K+</div>
               <p className="text-gray-600">Happy Community Members</p>
             </div>
