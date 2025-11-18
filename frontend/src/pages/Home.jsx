@@ -29,26 +29,6 @@ const Home = () => {
   const testimonials = [
     {
       id: 1,
-      name: 'Sarah Chen',
-      role: 'Resident, Milimani Estate',
-      avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face',
-      rating: 5,
-      comment: 'There\'s noticeably less litter around the estate since the new system was installed. The reporting feature makes it so easy to alert authorities about overflowing bins.',
-      improvement: 'Community cleanliness improved by 70%',
-      website: 'milimanicommunity.org'
-    },
-    {
-      id: 2,
-      name: 'David Omondi',
-      role: 'Sustainability Manager',
-      avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face',
-      rating: 4,
-      comment: 'This system is helping us meet our sustainability and recycling goals. The data analytics help us track our progress effectively.',
-      improvement: 'Recycling rates increased by 45%',
-      website: 'greeninitiatives.co.ke'
-    },
-    {
-      id: 3,
       name: 'Grace Wanjiku',
       role: 'Environmental Officer',
       avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face',
@@ -58,7 +38,7 @@ const Home = () => {
       website: 'kisumucounty.go.ke'
     },
     {
-      id: 4,
+      id: 2,
       name: 'Michael Otieno',
       role: 'Tech Enthusiast',
       avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
@@ -68,7 +48,7 @@ const Home = () => {
       website: 'tech4good.dev'
     },
     {
-      id: 5,
+      id: 3,
       name: 'Amina Hassan',
       role: 'Community Leader',
       avatar: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=150&h=150&fit=crop&crop=face',
@@ -78,7 +58,7 @@ const Home = () => {
       website: 'communityleaders.org'
     },
     {
-      id: 6,
+      id: 4,
       name: 'Robert Kimani',
       role: 'Waste Collection Driver',
       avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face',
@@ -86,6 +66,26 @@ const Home = () => {
       comment: 'The real-time reporting helps us prioritize areas that need immediate attention. It has made our work more efficient and impactful.',
       improvement: 'Response time improved by 50%',
       website: 'cleanpathservices.com'
+    },
+    {
+      id: 5,
+      name: 'James Mwangi',
+      role: 'Resident Association Chair',
+      avatar: 'https://images.unsplash.com/photo-1507591064344-4c6ce005b128?w=150&h=150&fit=crop&crop=face',
+      rating: 5,
+      comment: 'There\'s noticeably less litter around our estate since we started using this system. The reporting feature makes community cleanup efforts so much easier.',
+      improvement: 'Community cleanliness improved by 75%',
+      website: 'milimaniresidents.org'
+    },
+    {
+      id: 6,
+      name: 'Linda Akinyi',
+      role: 'Sustainability Coordinator',
+      avatar: 'https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?w=150&h=150&fit=crop&crop=face',
+      rating: 4,
+      comment: 'This platform is helping us achieve our sustainability targets. The data insights are invaluable for our environmental reports.',
+      improvement: 'Recycling participation up by 55%',
+      website: 'ecocitiesinitiative.com'
     }
   ];
 
