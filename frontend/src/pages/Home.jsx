@@ -109,16 +109,16 @@ const Home = () => {
 
     const interval = setInterval(() => {
       nextTestimonial();
-    }, 5000);
+    }, 4000);
 
     return () => clearInterval(interval);
-  }, [isAutoPlaying]);
+  }, [isAutoPlaying, currentTestimonial]);
 
   const renderStars = (rating) => {
     return Array.from({ length: 5 }).map((_, index) => (
       <Star
         key={index}
-        className={`h-4 w-4 ${
+        className={`h-5 w-5 ${
           index < rating ? 'text-yellow-400 fill-yellow-400' : 'text-gray-300'
         }`}
       />
@@ -249,7 +249,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Testimonials Section with Horizontal Slider */}
+      {/* Testimonials Section - Single Card Display */}
       <section className="relative py-12 md:py-24 px-4 sm:px-6 bg-gradient-to-br from-green-50 to-emerald-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 md:mb-20">
@@ -261,150 +261,96 @@ const Home = () => {
             </p>
           </div>
 
-          {/* Desktop Horizontal Slider */}
-          <div className="hidden lg:block">
+          {/* Single Testimonial Display */}
+          <div className="max-w-4xl mx-auto">
             <div className="relative">
+              {/* Testimonial Card */}
+              <div 
+                key={testimonials[currentTestimonial].id}
+                className="bg-white rounded-2xl shadow-2xl p-8 md:p-12 transform transition-all duration-500 animate-fade-in border-2 border-green-200"
+              >
+                {/* Rating Stars */}
+                <div className="flex justify-center mb-6">
+                  <div className="flex space-x-2">
+                    {renderStars(testimonials[currentTestimonial].rating)}
+                  </div>
+                </div>
+
+                {/* Testimonial Text */}
+                <p className="text-gray-700 text-center text-lg md:text-xl leading-relaxed italic mb-8">
+                  "{testimonials[currentTestimonial].comment}"
+                </p>
+
+                {/* Improvement Metric */}
+                <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-4 md:p-6 mb-8 text-center border border-green-200">
+                  <p className="text-base md:text-lg font-semibold text-green-700">
+                    📈 {testimonials[currentTestimonial].improvement}
+                  </p>
+                </div>
+
+                {/* Client Info */}
+                <div className="flex items-center justify-center space-x-6">
+                  <img
+                    src={testimonials[currentTestimonial].avatar}
+                    alt={testimonials[currentTestimonial].name}
+                    className="w-16 h-16 md:w-20 md:h-20 rounded-full object-cover border-4 border-green-200 shadow-lg"
+                  />
+                  <div className="text-left">
+                    <h4 className="font-bold text-gray-900 text-xl md:text-2xl">{testimonials[currentTestimonial].name}</h4>
+                    <p className="text-green-600 text-base md:text-lg">{testimonials[currentTestimonial].role}</p>
+                    <div className="flex items-center space-x-2 mt-2">
+                      <Globe className="h-4 w-4 text-green-500" />
+                      <span className="text-sm text-gray-600">{testimonials[currentTestimonial].website}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               {/* Navigation Buttons */}
               <button
                 onClick={prevTestimonial}
                 onMouseEnter={() => setIsAutoPlaying(false)}
-                className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-6 z-20 bg-white hover:bg-green-50 text-green-600 rounded-full p-3 shadow-lg border border-green-200 hover:scale-110 transition-all duration-300"
+                className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 md:-translate-x-8 bg-white hover:bg-green-50 text-green-600 rounded-full p-3 md:p-4 shadow-2xl border border-green-200 hover:scale-110 transition-all duration-300 z-10"
               >
-                <ChevronLeft className="h-6 w-6" />
+                <ChevronLeft className="h-6 w-6 md:h-8 md:w-8" />
               </button>
               
               <button
                 onClick={nextTestimonial}
                 onMouseEnter={() => setIsAutoPlaying(false)}
-                className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-6 z-20 bg-white hover:bg-green-50 text-green-600 rounded-full p-3 shadow-lg border border-green-200 hover:scale-110 transition-all duration-300"
+                className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 md:translate-x-8 bg-white hover:bg-green-50 text-green-600 rounded-full p-3 md:p-4 shadow-2xl border border-green-200 hover:scale-110 transition-all duration-300 z-10"
               >
-                <ChevronRight className="h-6 w-6" />
+                <ChevronRight className="h-6 w-6 md:h-8 md:w-8" />
               </button>
-
-              {/* Testimonials Container */}
-              <div className="overflow-hidden">
-                <div 
-                  className="flex transition-transform duration-500 ease-in-out"
-                  style={{ transform: `translateX(-${currentTestimonial * 33.333}%)` }}
-                >
-                  {testimonials.map((testimonial, index) => (
-                    <div
-                      key={testimonial.id}
-                      className="w-1/3 px-4 flex-shrink-0"
-                    >
-                      <div
-                        className={`bg-white rounded-2xl shadow-xl p-8 h-full transform transition-all duration-500 ${
-                          index === currentTestimonial 
-                            ? 'scale-105 border-2 border-green-400 shadow-2xl' 
-                            : 'scale-95 opacity-80 border border-green-100'
-                        }`}
-                      >
-                        {/* Rating Stars */}
-                        <div className="flex justify-center mb-4">
-                          <div className="flex space-x-1">
-                            {renderStars(testimonial.rating)}
-                          </div>
-                        </div>
-
-                        {/* Testimonial Text */}
-                        <p className="text-gray-700 text-center mb-6 leading-relaxed italic text-lg">
-                          "{testimonial.comment}"
-                        </p>
-
-                        {/* Improvement Metric */}
-                        <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-4 mb-6 text-center border border-green-200">
-                          <p className="text-sm font-semibold text-green-700">
-                            📈 {testimonial.improvement}
-                          </p>
-                        </div>
-
-                        {/* Client Info */}
-                        <div className="flex items-center space-x-4">
-                          <img
-                            src={testimonial.avatar}
-                            alt={testimonial.name}
-                            className="w-14 h-14 rounded-full object-cover border-2 border-green-200 shadow-md"
-                          />
-                          <div className="flex-1">
-                            <h4 className="font-bold text-gray-900 text-xl">{testimonial.name}</h4>
-                            <p className="text-green-600 text-base">{testimonial.role}</p>
-                            <div className="flex items-center space-x-1 mt-1">
-                              <Globe className="h-3 w-3 text-green-500" />
-                              <span className="text-xs text-gray-500">{testimonial.website}</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Dots Indicator */}
-              <div className="flex justify-center space-x-2 mt-8">
-                {testimonials.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => {
-                      setCurrentTestimonial(index);
-                      setIsAutoPlaying(false);
-                    }}
-                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                      index === currentTestimonial 
-                        ? 'bg-green-600 scale-125' 
-                        : 'bg-green-300 hover:bg-green-400'
-                    }`}
-                  />
-                ))}
-              </div>
             </div>
-          </div>
 
-          {/* Mobile Grid Layout */}
-          <div className="lg:hidden grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-            {testimonials.slice(0, 4).map((testimonial, index) => (
-              <div
-                key={testimonial.id}
-                className="bg-white rounded-xl md:rounded-2xl shadow-lg md:shadow-xl p-6 md:p-8 hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 animate-fade-in-up border border-green-100"
-                style={{ animationDelay: `${index * 150}ms` }}
+            {/* Dots Indicator */}
+            <div className="flex justify-center space-x-3 mt-8">
+              {testimonials.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => {
+                    setCurrentTestimonial(index);
+                    setIsAutoPlaying(false);
+                  }}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    index === currentTestimonial 
+                      ? 'bg-green-600 scale-125' 
+                      : 'bg-green-300 hover:bg-green-400'
+                  }`}
+                />
+              ))}
+            </div>
+
+            {/* Auto-play Toggle */}
+            <div className="text-center mt-6">
+              <button
+                onClick={() => setIsAutoPlaying(!isAutoPlaying)}
+                className="text-green-600 hover:text-green-700 text-sm font-medium transition-colors duration-300"
               >
-                {/* Rating Stars */}
-                <div className="flex justify-center mb-4">
-                  <div className="flex space-x-1">
-                    {renderStars(testimonial.rating)}
-                  </div>
-                </div>
-
-                {/* Testimonial Text */}
-                <p className="text-gray-700 text-center mb-6 leading-relaxed italic">
-                  "{testimonial.comment}"
-                </p>
-
-                {/* Improvement Metric */}
-                <div className="bg-green-50 rounded-lg p-3 mb-6 text-center">
-                  <p className="text-sm font-semibold text-green-700">
-                    📈 {testimonial.improvement}
-                  </p>
-                </div>
-
-                {/* Client Info */}
-                <div className="flex items-center space-x-4">
-                  <img
-                    src={testimonial.avatar}
-                    alt={testimonial.name}
-                    className="w-12 h-12 md:w-14 md:h-14 rounded-full object-cover border-2 border-green-200"
-                  />
-                  <div className="flex-1">
-                    <h4 className="font-bold text-gray-900 text-lg">{testimonial.name}</h4>
-                    <p className="text-green-600 text-sm">{testimonial.role}</p>
-                    <div className="flex items-center space-x-1 mt-1">
-                      <Globe className="h-3 w-3 text-green-500" />
-                      <span className="text-xs text-gray-500">{testimonial.website}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
+                {isAutoPlaying ? '⏸️ Pause' : '▶️ Play'} Auto-play
+              </button>
+            </div>
           </div>
 
           {/* Stats below testimonials */}
