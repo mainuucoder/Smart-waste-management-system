@@ -12,5 +12,13 @@ export default defineConfig({
         changeOrigin: true,
       }
     }
-  }
+  },
+  // Add these for production build
+  build: {
+    outDir: 'dist',
+    sourcemap: false,
+    chunkSizeWarningLimit: 1600,
+  },
+  // Important for proper asset paths in production
+  base: '/'
 })
