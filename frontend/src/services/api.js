@@ -1,5 +1,5 @@
 import axios from 'axios';
-const API_URL = 'https://smart-waste-management-n9yk.onrender.com/';
+const API_URL = 'https://smart-waste-management-n9yk.onrender.com/api';
 // const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
 const api = axios.create({
