@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Recycle, MapPin, Calendar, TrendingUp, Sparkles, Trash2, Mail, Phone, MapPin as MapPinIcon } from 'lucide-react';
+import { Recycle, MapPin, Calendar, TrendingUp, Sparkles, Trash2, Mail, Phone, MapPin as MapPinIcon, Star } from 'lucide-react';
 
 const Home = () => {
   const features = [
@@ -24,6 +24,74 @@ const Home = () => {
       description: 'Monitor the status of your reports and see community impact',
     },
   ];
+
+  const testimonials = [
+    {
+      id: 1,
+      name: 'Sarah Chen',
+      role: 'Resident, Milimani Estate',
+      avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face',
+      rating: 5,
+      comment: 'There\'s noticeably less litter around the estate since the new system was installed. The reporting feature makes it so easy to alert authorities about overflowing bins.',
+      improvement: 'Community cleanliness improved by 70%'
+    },
+    {
+      id: 2,
+      name: 'David Omondi',
+      role: 'Sustainability Manager',
+      avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face',
+      rating: 4,
+      comment: 'This system is helping us meet our sustainability and recycling goals. The data analytics help us track our progress effectively.',
+      improvement: 'Recycling rates increased by 45%'
+    },
+    {
+      id: 3,
+      name: 'Grace Wanjiku',
+      role: 'Environmental Officer',
+      avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face',
+      rating: 5,
+      comment: 'Collection routes are much faster and more organized now. The schedule reminders have significantly reduced missed collections in our area.',
+      improvement: 'Collection efficiency up by 60%'
+    },
+    {
+      id: 4,
+      name: 'Michael Otieno',
+      role: 'Tech Enthusiast',
+      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
+      rating: 4,
+      comment: 'It would be great if the system could categorize waste automatically in the future. The current features are already making a huge difference in our community.',
+      improvement: 'Waste sorting accuracy improved'
+    },
+    {
+      id: 5,
+      name: 'Amina Hassan',
+      role: 'Community Leader',
+      avatar: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=150&h=150&fit=crop&crop=face',
+      rating: 5,
+      comment: 'The educational resources on recycling have transformed how residents handle waste. We\'ve seen a dramatic reduction in contamination of recyclable materials.',
+      improvement: 'Recycling contamination down by 80%'
+    },
+    {
+      id: 6,
+      name: 'Robert Kimani',
+      role: 'Waste Collection Driver',
+      avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face',
+      rating: 5,
+      comment: 'The real-time reporting helps us prioritize areas that need immediate attention. It has made our work more efficient and impactful.',
+      improvement: 'Response time improved by 50%'
+    }
+  ];
+
+  const renderStars = (rating) => {
+    return Array.from({ length: 5 }).map((_, index) => (
+      <Star
+        key={index}
+        className={`h-4 w-4 ${
+          index < rating ? 'text-yellow-400 fill-yellow-400' : 'text-gray-300'
+        }`}
+      />
+    ));
+  };
 
   return (
     <div className="min-h-screen">
@@ -149,6 +217,78 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Testimonials Section */}
+      <section className="relative py-12 md:py-24 px-4 sm:px-6 bg-gradient-to-br from-green-50 to-emerald-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12 md:mb-20">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 animate-fade-in">
+              What Our Community Says
+            </h2>
+            <p className="text-lg sm:text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto px-2">
+              Real stories from residents and professionals making a difference
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {testimonials.map((testimonial, index) => (
+              <div
+                key={testimonial.id}
+                className="bg-white rounded-xl md:rounded-2xl shadow-lg md:shadow-xl p-6 md:p-8 hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 animate-fade-in-up border border-green-100"
+                style={{ animationDelay: `${index * 150}ms` }}
+              >
+                {/* Rating Stars */}
+                <div className="flex justify-center mb-4">
+                  <div className="flex space-x-1">
+                    {renderStars(testimonial.rating)}
+                  </div>
+                </div>
+
+                {/* Testimonial Text */}
+                <p className="text-gray-700 text-center mb-6 leading-relaxed italic">
+                  "{testimonial.comment}"
+                </p>
+
+                {/* Improvement Metric */}
+                <div className="bg-green-50 rounded-lg p-3 mb-6 text-center">
+                  <p className="text-sm font-semibold text-green-700">
+                    📈 {testimonial.improvement}
+                  </p>
+                </div>
+
+                {/* Client Info */}
+                <div className="flex items-center space-x-4">
+                  <img
+                    src={testimonial.avatar}
+                    alt={testimonial.name}
+                    className="w-12 h-12 md:w-14 md:h-14 rounded-full object-cover border-2 border-green-200"
+                  />
+                  <div className="flex-1">
+                    <h4 className="font-bold text-gray-900 text-lg">{testimonial.name}</h4>
+                    <p className="text-green-600 text-sm">{testimonial.role}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Stats below testimonials */}
+          <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+            <div className="bg-white rounded-xl p-6 shadow-lg border border-green-100">
+              <div className="text-3xl md:text-4xl font-bold text-green-600 mb-2">4.8/5</div>
+              <p className="text-gray-600">Average User Rating</p>
+            </div>
+            <div className="bg-white rounded-xl p-6 shadow-lg border border-green-100">
+              <div className="text-3xl md:text-4xl font-bold text-green-600 mb-2">95%</div>
+              <p className="text-gray-600">Satisfaction Rate</p>
+            </div>
+            <div className="bg-white rounded-xl p-6 shadow-lg border border-green-100">
+              <div className="text-3xl md:text-4xl font-bold text-green-600 mb-2">2K+</div>
+              <p className="text-gray-600">Happy Community Members</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Stats Section with Nature Background */}
       <section 
         className="relative py-12 md:py-24 px-4 sm:px-6"
@@ -204,7 +344,7 @@ const Home = () => {
   );
 };
 
-// Footer Component
+// Footer Component (unchanged)
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
